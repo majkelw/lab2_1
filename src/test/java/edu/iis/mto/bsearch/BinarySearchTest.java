@@ -15,14 +15,14 @@ class BinarySearchTest {
     void setUp() throws Exception {};
 
     @Test
-    void keyInSeq(){
+    void keyInSingleSeq(){
         int key = 16;
         searchResult = BinarySearch.search(key, singleSeq);
         assertTrue(searchResult.isFound());
     }
 
     @Test
-    void keyNotInSeq() {
+    void keyNotInSingleSeq() {
         int key = 786;
         searchResult = BinarySearch.search(key, singleSeq);
         assertTrue(!searchResult.isFound());
