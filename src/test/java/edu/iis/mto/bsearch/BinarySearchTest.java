@@ -8,8 +8,9 @@ import org.junit.jupiter.api.Test;
 
 class BinarySearchTest {
 
-    private int[] singleSeq = {16};
-    private int[] seq = {10, 34, 123, 767};
+    private final int[] singleSeq = {16};
+    private final int[] seq = {10, 34, 123, 767};
+    private final int[] bigSeq = {4, 67, 99, 517, 900, 8912};
     private SearchResult searchResult;
 
     @BeforeEach
@@ -35,14 +36,14 @@ class BinarySearchTest {
     void keyAsFirstElement() {
         int key = 10;
         searchResult = BinarySearch.search(key, seq);
-        assertEquals(key, seq[0]);
+        assertEquals(1, searchResult.getPosition());
     }
 
     @Test
     void keyAsLastElement() {
         int key = 767;
         searchResult = BinarySearch.search(key, seq);
-        assertEquals(key, seq[seq.length - 1]);
+        assertEquals(seq.length, searchResult.getPosition());
     }
 
     @Test
@@ -57,6 +58,13 @@ class BinarySearchTest {
         int key = 99;
         searchResult = BinarySearch.search(key, seq);
         assertFalse(searchResult.isFound());
+    }
+
+    @Test
+    void keyAsMidElement(){
+        int key = 517;
+        searchResult = BinarySearch.search(key, seq);
+
     }
 
 }
