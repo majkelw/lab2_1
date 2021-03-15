@@ -16,7 +16,6 @@ class BinarySearchTest {
     @Test
     void keyInSeq(){
         int key = 34;
-        int[] seq = {10, 34, 123, 767};
         searchResult = BinarySearch.search(key, seq);
         assertTrue(searchResult.isFound());
     }
@@ -24,9 +23,22 @@ class BinarySearchTest {
     @Test
     void keyNotInSeq() {
         int key = 786;
-        int[] seq = {10, 34, 123, 767};
         searchResult = BinarySearch.search(key, seq);
         assertTrue(!searchResult.isFound());
-
     }
+
+    @Test
+    void keyAsFirstElement(){
+        int key = 10;
+        searchResult = BinarySearch.search(key, seq);
+        assertTrue(seq[0] == key);
+    }
+
+    @Test
+    void keyAsLastElement(){
+        int key = 767;
+        searchResult = BinarySearch.search(key, seq);
+        assertTrue(seq[seq.length-1] == key);
+    }
+
 }
