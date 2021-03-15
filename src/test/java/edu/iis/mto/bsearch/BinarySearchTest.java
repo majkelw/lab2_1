@@ -11,11 +11,14 @@ class BinarySearchTest {
     private int[] singleSeq = {16};
     private int[] seq = {10, 34, 123, 767};
     private SearchResult searchResult;
+
     @BeforeEach
-    void setUp() throws Exception {};
+    void setUp() throws Exception {
+    }
+
 
     @Test
-    void keyInSingleSeq(){
+    void keyInSingleSeq() {
         int key = 16;
         searchResult = BinarySearch.search(key, singleSeq);
         assertTrue(searchResult.isFound());
@@ -25,21 +28,35 @@ class BinarySearchTest {
     void keyNotInSingleSeq() {
         int key = 786;
         searchResult = BinarySearch.search(key, singleSeq);
-        assertTrue(!searchResult.isFound());
+        assertFalse(searchResult.isFound());
     }
 
     @Test
-    void keyAsFirstElement(){
+    void keyAsFirstElement() {
         int key = 10;
         searchResult = BinarySearch.search(key, seq);
-        assertTrue(seq[0] == key);
+        assertEquals(key, seq[0]);
     }
 
     @Test
-    void keyAsLastElement(){
+    void keyAsLastElement() {
         int key = 767;
         searchResult = BinarySearch.search(key, seq);
-        assertTrue(seq[seq.length-1] == key);
+        assertEquals(key, seq[seq.length - 1]);
+    }
+
+    @Test
+    void keyInSeq() {
+        int key = 123;
+        searchResult = BinarySearch.search(key, seq);
+        assertTrue(searchResult.isFound());
+    }
+
+    @Test
+    void keyNotInSeq() {
+        int key = 99;
+        searchResult = BinarySearch.search(key, seq);
+        assertFalse(searchResult.isFound());
     }
 
 }
