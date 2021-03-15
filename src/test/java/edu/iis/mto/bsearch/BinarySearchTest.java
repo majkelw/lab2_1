@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class BinarySearchTest {
 
+    private int[] singleSeq = {16};
     private int[] seq = {10, 34, 123, 767};
     private SearchResult searchResult;
     @BeforeEach
@@ -15,15 +16,15 @@ class BinarySearchTest {
 
     @Test
     void keyInSeq(){
-        int key = 34;
-        searchResult = BinarySearch.search(key, seq);
+        int key = 16;
+        searchResult = BinarySearch.search(key, singleSeq);
         assertTrue(searchResult.isFound());
     }
 
     @Test
     void keyNotInSeq() {
         int key = 786;
-        searchResult = BinarySearch.search(key, seq);
+        searchResult = BinarySearch.search(key, singleSeq);
         assertTrue(!searchResult.isFound());
     }
 
