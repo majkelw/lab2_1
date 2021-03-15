@@ -8,12 +8,25 @@ import org.junit.jupiter.api.Test;
 
 class BinarySearchTest {
 
+    private int[] seq = {10, 34, 123, 767};
+    private SearchResult searchResult;
     @BeforeEach
-    void setUp() throws Exception {}
+    void setUp() throws Exception {};
 
     @Test
-    void test() {
-        fail("Not yet implemented");
+    void keyInSeq(){
+        int key = 34;
+        int[] seq = {10, 34, 123, 767};
+        searchResult = BinarySearch.search(key, seq);
+        assertTrue(searchResult.isFound());
     }
 
+    @Test
+    void keyNotInSeq() {
+        int key = 786;
+        int[] seq = {10, 34, 123, 767};
+        searchResult = BinarySearch.search(key, seq);
+        assertTrue(!searchResult.isFound());
+
+    }
 }
