@@ -10,7 +10,7 @@ class BinarySearchTest {
 
     private final int[] singleSeq = {16};
     private final int[] seq = {10, 34, 123, 767};
-    private final int[] bigSeq = {4, 67, 99, 517, 900, 8912,90000};
+    private final int[] bigSeq = {4, 67, 99, 517, 900, 8912, 90000};
     private SearchResult searchResult;
 
     @BeforeEach
@@ -36,6 +36,7 @@ class BinarySearchTest {
     void keyAsFirstElement() {
         int key = 10;
         searchResult = BinarySearch.search(key, seq);
+        assertTrue(searchResult.isFound());
         assertEquals(1, searchResult.getPosition());
     }
 
@@ -43,6 +44,7 @@ class BinarySearchTest {
     void keyAsLastElement() {
         int key = 767;
         searchResult = BinarySearch.search(key, seq);
+        assertTrue(searchResult.isFound());
         assertEquals(seq.length, searchResult.getPosition());
     }
 
