@@ -90,4 +90,20 @@ class BinarySearchTest {
                 () -> BinarySearch.search(key, seq));
     }
 
+    @Test
+    void isArraySorted() {
+        int[] seq = {32, 45, 89, 120, 500, 9213, 1, 2, -8};
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> BinarySearch.search(-1, seq));
+    }
+
+    @Test
+    void hasDuplicates() {
+        int[] seq = {111, 111, 900, 1230, 12300, 12300};
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> BinarySearch.search(-1, seq));
+    }
+
 }
