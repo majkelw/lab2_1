@@ -11,11 +11,11 @@ class BinarySearchTest {
 
     private final int[] singleSeq = {16};
     private final int[] seq = {10, 34, 123, 767};
-    private final int[] bigSeq = {4, 67, 88, 517, 900, 8912};
+
     private SearchResult searchResult;
 
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp() {
     }
 
 
@@ -64,23 +64,30 @@ class BinarySearchTest {
     }
 
     @Test
-    void keyAsMidElement() {
+    void keyAsMidElementInEvenLengthSeq() {
+        final int[] bigSeq = {4, 67, 88, 517, 900, 8912};
         int key = 88;
         searchResult = BinarySearch.search(key, bigSeq);
-        assertEquals(true, searchResult.isFound());
+        assertTrue(searchResult.isFound());
         assertEquals(bigSeq.length / 2, searchResult.getPosition());
     }
 
+    @Test
+    void keyAsMidElementInOddLengthSeq() {
+        final int[] bigSeq = {456, 670, 10293, 19900, 63412, 123456, 1000000};
+        int key = 19900;
+        searchResult = BinarySearch.search(key, bigSeq);
+        assertTrue(searchResult.isFound());
+        assertEquals((bigSeq.length / 2) + 1, searchResult.getPosition());
+    }
 
     @Test
     void checkEmptySeq() {
         int key = -99;
-        int seq[] = {};
+        int[] seq = {};
         Assertions.assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    BinarySearch.search(key, seq);
-                });
+                () -> BinarySearch.search(key, seq));
     }
 
 }
